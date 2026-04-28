@@ -3,6 +3,8 @@
 
 TelaPrincipal telaPrincipal = new TelaPrincipal();
 
+object objeto = telaPrincipal;
+
 while (true)
 {
     ITela? telaSelecionada = telaPrincipal.ApresentarMenuOpcao();
@@ -30,6 +32,10 @@ while (true)
 
             else if (opcaoSubMenu == "4")
                 telaBase.VisualizarTodos(deveExibirCabecalho: true);
+            else if (opcaoSubMenu == "S")
+            {
+                break;
+            }
         }
     }
 }

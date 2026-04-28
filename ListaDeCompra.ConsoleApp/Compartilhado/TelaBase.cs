@@ -18,15 +18,15 @@ public abstract class TelaBase : ITela
         string nomeMinusculo = nomeEntidade.ToLower();
 
         // Console.Clear();
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
         Console.WriteLine($"Gestão de {nomeEntidade}");
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
         Console.WriteLine($"1 - Cadastrar {nomeMinusculo}");
         Console.WriteLine($"2 - Editar {nomeMinusculo}");
         Console.WriteLine($"3 - Excluir {nomeMinusculo}");
         Console.WriteLine($"4 - Visualizar {nomeMinusculo}s");
         Console.WriteLine("S - Voltar para o início");
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
         Console.Write("> ");
         string? opcaoMenu = Console.ReadLine()?.ToUpper();
 
@@ -43,7 +43,7 @@ public abstract class TelaBase : ITela
 
         if (erros.Length > 0)
         {
-            Console.WriteLine("================================================================");
+            Console.WriteLine("==============================================");
 
             Console.ForegroundColor = ConsoleColor.Red;
 
@@ -55,7 +55,7 @@ public abstract class TelaBase : ITela
             }
 
             Console.ResetColor();
-            Console.WriteLine("================================================================");
+            Console.WriteLine("==============================================");
             Console.Write("Digite ENTER para continuar...");
             Console.ReadLine();
 
@@ -74,7 +74,7 @@ public abstract class TelaBase : ITela
 
         VisualizarTodos(deveExibirCabecalho: false);
 
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
 
         string? idSelecionado;
 
@@ -87,7 +87,7 @@ public abstract class TelaBase : ITela
                 break;
         } while (true);
 
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
 
         EntidadeBase novaEntidade = ObterDadosCadastrais();
 
@@ -95,7 +95,7 @@ public abstract class TelaBase : ITela
 
         if (erros.Length > 0)
         {
-            Console.WriteLine("================================================================");
+            Console.WriteLine("==============================================");
 
             Console.ForegroundColor = ConsoleColor.Red;
 
@@ -107,7 +107,7 @@ public abstract class TelaBase : ITela
             }
 
             Console.ResetColor();
-            Console.WriteLine("================================================================");
+            Console.WriteLine("==============================================");
             Console.Write("Digite ENTER para continuar...");
             Console.ReadLine();
 
@@ -132,7 +132,7 @@ public abstract class TelaBase : ITela
 
         VisualizarTodos(deveExibirCabecalho: false);
 
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
 
         string? idSelecionado;
 
@@ -161,18 +161,18 @@ public abstract class TelaBase : ITela
     protected void ExibirCabecalho(string titulo)
     {
         Console.Clear();
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
         Console.WriteLine($"Gestão de {nomeEntidade}");
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
         Console.WriteLine(titulo);
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
     }
 
     protected void ExibirMensagem(string mensagem)
     {
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
         Console.WriteLine(mensagem);
-        Console.WriteLine("================================================================");
+        Console.WriteLine("==============================================");
         Console.Write("Digite ENTER para continuar...");
         Console.ReadLine();
     }
