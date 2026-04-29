@@ -32,8 +32,10 @@ public class Categoria : EntidadeBase
 
         if (Nome.Length == 0 && Nome.Length > 50)
             erros += "O campo Nome deve conter entre 0 e 50 caractere;";
+
         if (string.IsNullOrWhiteSpace(Cor))
-            erros += "O campo COr deve ser preenchido";
+            erros += "O campo Cor deve ser preenchido";
+
         else if (Cor != "Vermelho" && Cor != "Azul" && Cor != "Verde" && Cor != "Branco;")
             erros += "O campo Cor deve conter uma seleção valida;";
 

@@ -1,14 +1,13 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using ListaDeCompra.ConsoleApp.Compartilhado;
 
 namespace ListaDeCompra.ConsoleApp.ModuloCategoria;
 
-public class TelaCategoria : TelaBase
+public class TelaCategoria : TelaBase<Categoria>, ITelaOpcoes, ITelaCrud
 {
-
-    private RepositorioBase repositorio;
-    public TelaCategoria(RepositorioBase repositorio) : base("Categoria", repositorio)
+    public TelaCategoria(RepositorioBase<Categoria> repositorio) : base("Categoria", repositorio)
     {
     }
 
@@ -25,7 +24,7 @@ public class TelaCategoria : TelaBase
 
         );
 
-        ArrayList categoria = repositorio.SelecionarTodos();
+        List<Categoria> categoria = repositorio.SelecionarTodos();
 
         foreach (Categoria c in categoria)
         {
@@ -46,16 +45,18 @@ public class TelaCategoria : TelaBase
                 c.Id, c.Nome, c.Cor
             );
 
-            Console.ReadLine();
+            Console.ResetColor();
         }
+        Console.WriteLine("Digite ENTER para continuar..");
+        Console.ReadLine();
     }
 
-    protected override EntidadeBase ObterDadosCadastrais()
+    protected override Categoria ObterDadosCadastrais()
     {
         Console.Write("Digite o nome da categoria: ");
         string nome = Console.ReadLine() ?? string.Empty;
 
-        Console.Write("Digite a cor da categoria: ");
+        Console.WriteLine("Digite a cor da categoria: ");
 
         Console.WriteLine("=============================================");
         Console.WriteLine("1 - Vermelho");
@@ -67,15 +68,15 @@ public class TelaCategoria : TelaBase
 
         string corPorExtenso;
 
-        if (Cor != "1")
+        if (Cor == "1")
         {
             corPorExtenso = "Vermelho";
         }
-        else if (Cor != "2")
+        else if (Cor == "2")
         {
             corPorExtenso = "Azul";
         }
-        else if (Cor != "3")
+        else if (Cor == "3")
         {
             corPorExtenso = "Verde";
         }
@@ -84,6 +85,6 @@ public class TelaCategoria : TelaBase
             corPorExtenso = "Branco";
         }
 
-        return new Categoria();
+        return new Categoria(nome, corPorExtenso);
     }
 }

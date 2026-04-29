@@ -1,15 +1,16 @@
 using System;
 using System.Collections; //biblioteca que contem classes de coleções que utilizam herança
+using System.Collections.Generic; //biblioteca que contem classes de coleções que utilizam herança
 
 namespace ListaDeCompra.ConsoleApp.Compartilhado;
 
-public abstract class RepositorioBase
+public abstract class RepositorioBase<T> where T : EntidadeBase // constraint /restrição
 {
-    //protected EntidadeBase?[] registros = new EntidadeBase[100];
-    protected ArrayList registros = new ArrayList();
+    //protected T?[] registros = new T[100];
+    protected List<T> registros = new List<T>();
 
 
-    public void Cadastrar(EntidadeBase entidade)
+    public void Cadastrar(T entidade)
     {
         registros.Add(entidade); // quem fica responsavel por tudo agr é o Add.
 
@@ -23,9 +24,9 @@ public abstract class RepositorioBase
         // }
     }
 
-    public bool Editar(string idSelecionado, EntidadeBase entidade)
+    public bool Editar(string idSelecionado, T entidade)
     {
-        EntidadeBase? entidadeSelecionada = SelecionarPorId(idSelecionado);
+        T? entidadeSelecionada = SelecionarPorId(idSelecionado);
 
         if (entidadeSelecionada == null)
             return false;
@@ -37,7 +38,7 @@ public abstract class RepositorioBase
 
     public bool Excluir(string idSelecionado)
     {
-        EntidadeBase? registroSelecionado = SelecionarPorId(idSelecionado);
+        T? registroSelecionado = SelecionarPorId(idSelecionado);
 
         if (registroSelecionado == null)
             return false;
@@ -45,7 +46,7 @@ public abstract class RepositorioBase
 
         // for (int i = 0; i < registros.Length; i++)
         // {
-        //     EntidadeBase? c = registros[i];
+        //     T? c = registros[i];
 
         //     if (c == null)
         //         continue;
@@ -60,10 +61,10 @@ public abstract class RepositorioBase
         return true;
     }
 
-    public EntidadeBase? SelecionarPorId(string idSelecionado)
+    public T? SelecionarPorId(string idSelecionado)
     {
         //versao 1 foeach
-        foreach (EntidadeBase registro in registros)
+        foreach (T registro in registros)
         {
             if (registro.Id == idSelecionado)
                 return registro;
@@ -74,7 +75,7 @@ public abstract class RepositorioBase
         //versao 2 com for
         // for (int i = 0; i < registros.Count; i++)
         // {
-        //     EntidadeBase? c = (EntidadeBase?)registros[i];
+        //     T? c = (T?)registros[i];
 
         //     if (c == null)
         //         continue;
@@ -89,7 +90,7 @@ public abstract class RepositorioBase
         //return entidadeSelecionada;
     }
 
-    public ArrayList SelecionarTodos()
+    public List<T> SelecionarTodos()
     {
         return registros;
     }

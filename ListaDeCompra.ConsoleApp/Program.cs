@@ -1,4 +1,5 @@
 ﻿using ListaDeCompra.ConsoleApp.Compartilhado;
+using ListaDeCompra.ConsoleApp.ModuloProduto;
 
 
 TelaPrincipal telaPrincipal = new TelaPrincipal();
@@ -7,7 +8,7 @@ object objeto = telaPrincipal;
 
 while (true)
 {
-    ITela? telaSelecionada = telaPrincipal.ApresentarMenuOpcao();
+    ITelaOpcoes? telaSelecionada = telaPrincipal.ApresentarMenuOpcao();
 
     if (telaSelecionada == null)
     {
@@ -19,23 +20,23 @@ while (true)
     {
         string? opcaoSubMenu = telaSelecionada.ObterOpcaoMenu();
 
-        if (telaSelecionada is TelaBase telaBase)
+        if (telaSelecionada is ITelaCrud telaCrud)
         {
             if (opcaoSubMenu == "1")
-                telaBase.Cadastrar();
+                telaCrud.Cadastrar();
 
             else if (opcaoSubMenu == "2")
-                telaBase.Editar();
+                telaCrud.Editar();
 
             else if (opcaoSubMenu == "3")
-                telaBase.Excluir();
+                telaCrud.Excluir();
 
             else if (opcaoSubMenu == "4")
-                telaBase.VisualizarTodos(deveExibirCabecalho: true);
-            else if (opcaoSubMenu == "S")
-            {
+                telaCrud.VisualizarTodos(deveExibirCabecalho: true);
+
+            if (opcaoSubMenu == "S")
                 break;
-            }
+
         }
     }
 }
