@@ -1,5 +1,6 @@
 using System;
 using ListaDeCompra.ConsoleApp.Compartilhado;
+using ListaDeCompra.ConsoleApp.ModuloCategoria;
 
 namespace ListaDeCompra.ConsoleApp.ModuloProduto;
 
@@ -8,12 +9,14 @@ public class Produto : EntidadeBase
     public string Nome { get; set; } = string.Empty;
     public string UnidadeDeMedida { get; set; } = string.Empty;
     public decimal PrecoProduto { get; set; }
+    public Categoria Categoria { get; set; }
 
-    public Produto(string nome, string unidadeDeMedida, decimal precoProduto)
+    public Produto(string nome, string unidadeDeMedida, decimal precoProduto, Categoria categoria)
     {
         Nome = nome;
         UnidadeDeMedida = unidadeDeMedida;
         PrecoProduto = precoProduto;
+        Categoria = categoria;
     }
 
 

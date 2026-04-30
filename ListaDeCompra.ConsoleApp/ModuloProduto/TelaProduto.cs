@@ -9,29 +9,32 @@ namespace ListaDeCompra.ConsoleApp.ModuloProdutos;
 
 public class TelaProduto : TelaBase<Produto>, ITelaOpcoes, ITelaCrud
 {
-    private RepositorioBase<Categoria> repositorioCategoria = new RepositorioCategoria();
-    public TelaProduto(RepositorioBase<Produto> repositorio) : base("produto", repositorio)
+    private RepositorioBase<Categoria> repositorioCategoria;
+
+    public TelaProduto(RepositorioBase<Produto> repositorio, RepositorioBase<Categoria> repositorioCategoria) : base("produto", repositorio)
     {
+        this.repositorioCategoria = repositorioCategoria;
     }
 
     public override void VisualizarTodos(bool deveExibirCabecalho)
     {
         if (deveExibirCabecalho)
-            ExibirCabecalho("Visualização de categoria");
+            ExibirCabecalho("Visualização de Produto");
 
         Console.WriteLine
         (
             "{0, -7} | {1, -10} | {2, -20} | {3, -20} | {4, -20}",
             "Id", "Nome", "unidade de medida", "Preço do produto", "Categoria"
-
-
         );
 
-        List<Produto> categoria = repositorio.SelecionarTodos();
+        //
 
-        Categoria c = new Categoria();
-        foreach (Produto p in categoria)
+        List<Produto> produtos = repositorio.SelecionarTodos();
+
+        foreach (Produto p in produtos)
         {
+            Categoria c = p.Categoria;
+
             Console.WriteLine
             (
                 "{0, -7} | {1, -10} | {2, -20} | {3, -20} | {4, -20}",
@@ -55,14 +58,14 @@ public class TelaProduto : TelaBase<Produto>, ITelaOpcoes, ITelaCrud
         Console.Write("Digite o preço do Produto: ");
         decimal precoProduto = Convert.ToDecimal(Console.ReadLine());
 
-        string idSelecionado = SelecionarCategoria();
+        string idSelecionado = SelecionarCategoria(); //erro nesta linha
 
         Categoria? categoriaSelecionada = (Categoria?)repositorioCategoria.SelecionarPorId(idSelecionado);
 
         if (categoriaSelecionada == null)
-            Console.WriteLine("Não foi possivel selecinar esta categoria..");
+            throw new NullReferenceException("Não foi possivel selecinar esta categoria..");
 
-        return new Produto(nome, unidadeDeMedida, precoProduto);
+        return new Produto(nome, unidadeDeMedida, precoProduto, categoriaSelecionada);
     }
 
     private string SelecionarCategoria()
@@ -75,9 +78,9 @@ public class TelaProduto : TelaBase<Produto>, ITelaOpcoes, ITelaCrud
 
         );
 
-        List<Categoria> categoria = repositorioCategoria.SelecionarTodos();
+        List<Categoria> categorias = repositorioCategoria.SelecionarTodos();
 
-        foreach (Categoria c in categoria)
+        foreach (Categoria c in categorias)
         {
             string corSelecionada = c.Cor;
 

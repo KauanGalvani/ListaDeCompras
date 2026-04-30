@@ -17,7 +17,13 @@ public abstract class TelaBase<T> where T : EntidadeBase
     {
         string nomeMinusculo = nomeEntidade.ToLower();
 
-        // Console.Clear();
+        Console.Clear();
+
+        if (nomeEntidade == "Categoria")
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+        else if (nomeEntidade == "Produto")
+            Console.ForegroundColor = ConsoleColor.Gray;
+
         Console.WriteLine("==============================================");
         Console.WriteLine($"Gestão de {nomeEntidade}");
         Console.WriteLine("==============================================");
@@ -27,8 +33,9 @@ public abstract class TelaBase<T> where T : EntidadeBase
         Console.WriteLine($"4 - Visualizar {nomeMinusculo}s");
         Console.WriteLine("S - Voltar para o início");
         Console.WriteLine("==============================================");
-        Console.Write("> ");
+        Console.Write(">> ");
         string? opcaoMenu = Console.ReadLine()?.ToUpper();
+        Console.ResetColor();
 
         return opcaoMenu;
     }
