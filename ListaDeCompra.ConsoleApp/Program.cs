@@ -36,7 +36,6 @@ while (true)
 
             if (opcaoSubMenu == "S")
                 break;
-
         }
     }
 }

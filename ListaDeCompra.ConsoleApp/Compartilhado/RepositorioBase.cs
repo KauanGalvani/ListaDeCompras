@@ -42,6 +42,7 @@ public abstract class RepositorioBase<T> where T : EntidadeBase // constraint /r
 
         if (registroSelecionado == null)
             return false;
+
         registros.Remove(registroSelecionado);
 
         // for (int i = 0; i < registros.Length; i++)

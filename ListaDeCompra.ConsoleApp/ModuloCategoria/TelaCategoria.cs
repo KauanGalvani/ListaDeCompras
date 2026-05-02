@@ -47,8 +47,6 @@ public class TelaCategoria : TelaBase<Categoria>, ITelaOpcoes, ITelaCrud
 
             Console.ResetColor();
         }
-        Console.WriteLine("Digite ENTER para continuar..");
-        Console.ReadLine();
     }
 
     protected override Categoria ObterDadosCadastrais()
@@ -86,5 +84,23 @@ public class TelaCategoria : TelaBase<Categoria>, ITelaOpcoes, ITelaCrud
         }
 
         return new Categoria(nome, corPorExtenso);
+    }
+
+    protected override List<string> ValidarRegistroDuplucado(Categoria novaEntidade, string? idIgnorado = null)
+    {
+        List<string> erros = new List<string>();
+
+        List<Categoria> categorias = repositorio.SelecionarTodos();
+
+        foreach (Categoria c in categorias)
+        {
+            if (c.Id != idIgnorado && c.Nome == novaEntidade.Nome)
+            {
+                erros.Add("Já existe uma categoria com este nome");
+                break;
+            }
+        }
+
+        return erros;
     }
 }

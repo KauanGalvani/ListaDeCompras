@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using ListaDeCompra.ConsoleApp.ModuloCategoria;
 
 namespace ListaDeCompra.ConsoleApp.Compartilhado;
 
@@ -23,6 +25,8 @@ public abstract class TelaBase<T> where T : EntidadeBase
             Console.ForegroundColor = ConsoleColor.DarkYellow;
         else if (nomeEntidade == "Produto")
             Console.ForegroundColor = ConsoleColor.Gray;
+        else if (nomeEntidade == "Lista de compra")
+            Console.ForegroundColor = ConsoleColor.Magenta;
 
         Console.WriteLine("==============================================");
         Console.WriteLine($"Gestão de {nomeEntidade}");
@@ -40,6 +44,11 @@ public abstract class TelaBase<T> where T : EntidadeBase
         return opcaoMenu;
     }
 
+    protected virtual List<string> ValidarRegistroDuplucado(T novaEntidade, string? idIgnorado = null)
+    {
+        return new List<string>();
+    }
+
     public void Cadastrar()
     {
         ExibirCabecalho($"Cadastro de {nomeEntidade}");
@@ -50,6 +59,7 @@ public abstract class TelaBase<T> where T : EntidadeBase
 
         if (erros.Length > 0)
         {
+            // adicionar uma classe statica para mostrar os erros
             Console.WriteLine("==============================================");
 
             Console.ForegroundColor = ConsoleColor.Red;
@@ -68,6 +78,20 @@ public abstract class TelaBase<T> where T : EntidadeBase
 
             Cadastrar();
             return;
+        }
+
+        List<string> errosDuplicacao = ValidarRegistroDuplucado(novaEntidade);
+
+        if (errosDuplicacao.Count > 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("===============================");
+            Console.WriteLine("Erro nome duplicado");
+            Console.ResetColor();
+            Console.Write("Digite ENTER para continuar...");
+            Console.ReadLine();
+
+            Cadastrar();
         }
 
         repositorio.Cadastrar(novaEntidade);
@@ -120,6 +144,20 @@ public abstract class TelaBase<T> where T : EntidadeBase
 
             Editar();
             return;
+        }
+
+        List<string> errosDuplicacao = ValidarRegistroDuplucado(novaEntidade, idSelecionado);
+
+        if (errosDuplicacao.Count > 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("===============================");
+            Console.WriteLine("Erro nome duplicado");
+            Console.ResetColor();
+            Console.Write("Digite ENTER para continuar...");
+            Console.ReadLine();
+
+            Cadastrar();
         }
 
         bool conseguiuEditar = repositorio.Editar(idSelecionado, novaEntidade);

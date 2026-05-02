@@ -43,8 +43,6 @@ public class TelaProduto : TelaBase<Produto>, ITelaOpcoes, ITelaCrud
 
             Console.ResetColor();
         }
-        Console.WriteLine("Digite ENTER para continuar..");
-        Console.ReadLine();
     }
 
     protected override Produto ObterDadosCadastrais()
@@ -115,5 +113,22 @@ public class TelaProduto : TelaBase<Produto>, ITelaOpcoes, ITelaCrud
         } while (true);
 
         return idSelecionado;
+    }
+
+    protected override List<string> ValidarRegistroDuplucado(Produto novaEntidade, string? idIgnorado = null)
+    {
+        List<string> erros = new List<string>();
+
+        List<Produto> produtos = repositorio.SelecionarTodos();
+
+        foreach (Produto p in produtos)
+        {
+            if (p.Id != idIgnorado && p.Nome == novaEntidade.Nome)
+            {
+                erros.Add("Ja existe o produto com este Nome");
+            }
+        }
+
+        return erros;
     }
 }
