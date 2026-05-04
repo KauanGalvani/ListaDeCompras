@@ -47,6 +47,9 @@ public class TelaCategoria : TelaBase<Categoria>, ITelaOpcoes, ITelaCrud
 
             Console.ResetColor();
         }
+
+        Console.WriteLine("Pressione ENTER para proceguir...");
+        Console.ReadLine();
     }
 
     protected override Categoria ObterDadosCadastrais()

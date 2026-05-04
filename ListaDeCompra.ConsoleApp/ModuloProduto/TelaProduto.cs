@@ -11,7 +11,7 @@ public class TelaProduto : TelaBase<Produto>, ITelaOpcoes, ITelaCrud
 {
     private RepositorioBase<Categoria> repositorioCategoria;
 
-    public TelaProduto(RepositorioBase<Produto> repositorio, RepositorioBase<Categoria> repositorioCategoria) : base("produto", repositorio)
+    public TelaProduto(RepositorioBase<Produto> repositorio, RepositorioBase<Categoria> repositorioCategoria) : base("Produto", repositorio)
     {
         this.repositorioCategoria = repositorioCategoria;
     }
