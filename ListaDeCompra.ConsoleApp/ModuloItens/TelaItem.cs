@@ -17,6 +17,27 @@ public class TelaItem : TelaBase<Item>, ITelaOpcoes, ITelaCrud
         this.repositorioProduto = repositorioProduto;
     }
 
+    public override string? ObterOpcaoMenu()
+    {
+        Console.ForegroundColor = ConsoleColor.Cyan;
+
+        Console.Clear();
+        Console.WriteLine("==============================================");
+        Console.WriteLine($"Gestão de item");
+        Console.WriteLine("==============================================");
+        Console.ResetColor();
+        Console.WriteLine($"1 - adicionar item");
+        Console.WriteLine($"2 - Editar item adicionado");
+        Console.WriteLine($"3 - remover item");
+        Console.WriteLine($"4 - Visualizar itens");
+        Console.WriteLine("S - Voltar para o início");
+        Console.WriteLine("==============================================");
+        Console.Write(">> ");
+        string? opcaoMenuItem = Console.ReadLine()?.ToUpper();
+
+        return opcaoMenuItem;
+    }
+
     public override void VisualizarTodos(bool deveExibirCabecalho)
     {
         if (deveExibirCabecalho)
@@ -67,9 +88,7 @@ public class TelaItem : TelaBase<Item>, ITelaOpcoes, ITelaCrud
 
     protected override Item ObterDadosCadastrais()
     {
-        Console.WriteLine("================================");
         Console.WriteLine("Selecione qual item deseja.");
-        Console.WriteLine("================================");
 
         string? idSelecionadoProduto = SelecionarItem();
 
@@ -82,9 +101,8 @@ public class TelaItem : TelaBase<Item>, ITelaOpcoes, ITelaCrud
         Console.Write("Digite a quantidade de produtos que deseja adicionar: ");
         double quantidade = Convert.ToDouble(Console.ReadLine());
 
-        Console.WriteLine("================================");
         Console.WriteLine("Selecione qual lista deseja guardar este item.");
-        Console.WriteLine("================================");
+
 
         string? idSelecionadoLista = SelecionarLista();
 
@@ -118,7 +136,7 @@ public class TelaItem : TelaBase<Item>, ITelaOpcoes, ITelaCrud
                 "{0, -7} | {1, -10} | {2, -20} | {3, -10} | {4, -20}",
                 p.Id, p.Nome, p.UnidadeDeMedida, p.PrecoProduto.ToString("C2"), c.Nome
             );
-            Console.WriteLine("================================");
+            Console.WriteLine("");
         }
 
         string? idSelecionado;
@@ -170,7 +188,8 @@ public class TelaItem : TelaBase<Item>, ITelaOpcoes, ITelaCrud
 
             Console.WriteLine("{0, -10}", statusAtual);
             Console.ResetColor();
-            Console.WriteLine("================================");
+
+            Console.WriteLine("");
         }
 
 

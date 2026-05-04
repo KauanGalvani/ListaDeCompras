@@ -15,39 +15,18 @@ public abstract class TelaBase<T> where T : EntidadeBase
         this.repositorio = repositorio;
     }
 
-    public string? ObterOpcaoMenu()
+    public virtual string? ObterOpcaoMenu()
     {
         string nomeMinusculo = nomeEntidade.ToLower();
 
-        Console.Clear();
         if (nomeEntidade == "Categoria")
             Console.ForegroundColor = ConsoleColor.DarkYellow;
         else if (nomeEntidade == "Produto")
             Console.ForegroundColor = ConsoleColor.DarkBlue;
         else if (nomeEntidade == "Lista de compra")
             Console.ForegroundColor = ConsoleColor.Magenta;
-        else if (nomeEntidade == "Item")
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
 
-            Console.WriteLine("==============================================");
-            Console.WriteLine($"Gestão de item");
-            Console.WriteLine("==============================================");
-            Console.ResetColor();
-            Console.WriteLine($"1 - adicionar item");
-            Console.WriteLine($"2 - Editar item adicionado");
-            Console.WriteLine($"3 - remover item");
-            Console.WriteLine($"4 - Visualizar itens");
-            Console.WriteLine("S - Voltar para o início");
-            Console.WriteLine("==============================================");
-            Console.Write(">> ");
-            string? opcaoMenuItem = Console.ReadLine()?.ToUpper();
-
-            return opcaoMenuItem;
-
-        }
-
-
+        Console.Clear();
         Console.WriteLine("==============================================");
         Console.WriteLine($"Gestão de {nomeEntidade}");
         Console.WriteLine("==============================================");
