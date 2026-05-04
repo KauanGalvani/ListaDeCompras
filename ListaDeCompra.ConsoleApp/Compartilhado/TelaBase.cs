@@ -26,6 +26,23 @@ public abstract class TelaBase<T> where T : EntidadeBase
             Console.ForegroundColor = ConsoleColor.Gray;
         else if (nomeEntidade == "Lista de compra")
             Console.ForegroundColor = ConsoleColor.Magenta;
+        else if (nomeEntidade == "Item")
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("==============================================");
+            Console.WriteLine($"Gestão de {nomeEntidade}");
+            Console.WriteLine("==============================================");
+            Console.WriteLine($"1 - adicionar um item a uma lista de compras");
+            Console.WriteLine($"2 - remover item da lista de compras");
+            Console.WriteLine($"3 - visualizar itens, listas de compras e suas categorias");
+            Console.WriteLine("S - Voltar para o início");
+            Console.WriteLine("==============================================");
+            Console.Write(">> ");
+            string? opcaoMenuItem = Console.ReadLine()?.ToUpper();
+            Console.ResetColor();
+
+            return opcaoMenuItem;
+        }
 
         Console.WriteLine("==============================================");
         Console.WriteLine($"Gestão de {nomeEntidade}");

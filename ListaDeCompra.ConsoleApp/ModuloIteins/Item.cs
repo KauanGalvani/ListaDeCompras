@@ -2,7 +2,7 @@ using System;
 
 namespace ListaDeCompra.ConsoleApp.ModuloIteins;
 
-public class TelaItem
+public class Item
 {
 
 }
