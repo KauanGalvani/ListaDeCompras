@@ -19,8 +19,7 @@ public abstract class TelaBase<T> where T : EntidadeBase
     {
         string nomeMinusculo = nomeEntidade.ToLower();
 
-        Console.Clear();
-
+        //Console.Clear();
         if (nomeEntidade == "Categoria")
             Console.ForegroundColor = ConsoleColor.DarkYellow;
         else if (nomeEntidade == "Produto")
@@ -44,13 +43,14 @@ public abstract class TelaBase<T> where T : EntidadeBase
         return opcaoMenu;
     }
 
-    protected virtual List<string> ValidarRegistroDuplucado(T novaEntidade, string? idIgnorado = null)
+    protected virtual List<string> ValidarRegistroDuplicado(T? novaEntidade = null, string? idIgnorado = null)
     {
         return new List<string>();
     }
 
     public void Cadastrar()
     {
+        Console.Clear();
         ExibirCabecalho($"Cadastro de {nomeEntidade}");
 
         T novaEntidade = ObterDadosCadastrais();
@@ -80,7 +80,7 @@ public abstract class TelaBase<T> where T : EntidadeBase
             return;
         }
 
-        List<string> errosDuplicacao = ValidarRegistroDuplucado(novaEntidade);
+        List<string> errosDuplicacao = ValidarRegistroDuplicado(novaEntidade);
 
         if (errosDuplicacao.Count > 0)
         {
@@ -146,7 +146,7 @@ public abstract class TelaBase<T> where T : EntidadeBase
             return;
         }
 
-        List<string> errosDuplicacao = ValidarRegistroDuplucado(novaEntidade, idSelecionado);
+        List<string> errosDuplicacao = ValidarRegistroDuplicado(novaEntidade, idSelecionado);
 
         if (errosDuplicacao.Count > 0)
         {

@@ -115,7 +115,7 @@ public class TelaProduto : TelaBase<Produto>, ITelaOpcoes, ITelaCrud
         return idSelecionado;
     }
 
-    protected override List<string> ValidarRegistroDuplucado(Produto novaEntidade, string? idIgnorado = null)
+    protected override List<string> ValidarRegistroDuplicado(Produto? novaEntidade, string? idIgnorado = null)
     {
         List<string> erros = new List<string>();
 
@@ -123,7 +123,7 @@ public class TelaProduto : TelaBase<Produto>, ITelaOpcoes, ITelaCrud
 
         foreach (Produto p in produtos)
         {
-            if (p.Id != idIgnorado && p.Nome == novaEntidade.Nome)
+            if (p.Id != idIgnorado && p.Nome == novaEntidade?.Nome)
             {
                 erros.Add("Ja existe o produto com este Nome");
             }

@@ -77,7 +77,7 @@ public class TelaListaDeCompra : TelaBase<ListaCompra>, ITelaOpcoes, ITelaCrud
 
     }
 
-    protected override List<string> ValidarRegistroDuplucado(ListaCompra novaEntidade, string? idIgnorado = null)
+    protected override List<string> ValidarRegistroDuplicado(ListaCompra? novaEntidade, string? idIgnorado = null)
     {
         List<string> erros = new List<string>();
 
@@ -85,7 +85,7 @@ public class TelaListaDeCompra : TelaBase<ListaCompra>, ITelaOpcoes, ITelaCrud
 
         foreach (ListaCompra l in lista)
         {
-            if (l.Id != idIgnorado && l.Nome == novaEntidade.Nome)
+            if (l.Id != idIgnorado && l.Nome == novaEntidade?.Nome)
             {
                 erros.Add("Este nome já existe em uma outra lista similar");
             }

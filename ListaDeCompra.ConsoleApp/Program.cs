@@ -12,7 +12,7 @@ while (true)
 
     if (telaSelecionada == null)
     {
-        Console.Clear();
+        //Console.Clear();
         break;
     }
 
