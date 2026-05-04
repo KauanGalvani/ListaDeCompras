@@ -1,19 +1,19 @@
-# 🛒 Lista de Compras
+#  Lista de Compras
 
 Sistema desenvolvido para ajudar a organizar compras semanais, evitando itens esquecidos ou duplicados.
 
 A aplicação permite cadastrar produtos, organizar listas de compras e acompanhar os gastos estimados de forma simples e eficiente.
 
 
-## 🚀 Funcionalidades
+##  Funcionalidades
 
 O sistema é dividido em 4 módulos principais:
 
 ---
 
-## 📂 1. Módulo de Categorias
+##  1. Módulo de Categorias
 
-### ✔️ Funcionalidades
+###  Funcionalidades
 - Cadastrar categorias
 - Editar categorias
 - Excluir categorias
@@ -21,18 +21,18 @@ O sistema é dividido em 4 módulos principais:
 
 ---
 
-## 🛍️ 2. Módulo de Produtos
+##  2. Módulo de Produtos
 
-### ✔️ Funcionalidades
+###  Funcionalidades
 - Cadastrar produtos
 - Editar produtos
 - Excluir produtos
 - Listar produtos
 
 
-## 📝 3. Módulo de Listas de Compras
+##  3. Módulo de Listas de Compras
 
-### ✔️ Funcionalidades
+###  Funcionalidades
 - Criar listas de compras
 - Editar listas
 - Excluir listas
@@ -40,9 +40,9 @@ O sistema é dividido em 4 módulos principais:
 
 ---
 
-## 📦 4. Módulo de Itens da Lista
+##  4. Módulo de Itens da Lista
 
-### ✔️ Funcionalidades
+###  Funcionalidades
 - Adicionar itens à lista
 - Remover itens da lista
 - Visualizar itens da lista
@@ -50,7 +50,7 @@ O sistema é dividido em 4 módulos principais:
 
 ---
 
-## 🧠 Regras Gerais do Sistema
+##  Regras Gerais do Sistema
 
 - Evitar duplicidade de dados
 - Garantir integridade entre categorias, produtos e listas
@@ -59,7 +59,7 @@ O sistema é dividido em 4 módulos principais:
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - C#
 - .NET
