@@ -54,7 +54,7 @@ public class TelaProduto : TelaBase<Produto>, ITelaOpcoes, ITelaCrud
         string unidadeDeMedida = Console.ReadLine() ?? string.Empty;
 
         Console.Write("Digite o preço do Produto: ");
-        decimal precoProduto = Convert.ToDecimal(Console.ReadLine());
+        double precoProduto = Convert.ToDouble(Console.ReadLine());
 
         string idSelecionado = SelecionarCategoria(); //erro nesta linha
 

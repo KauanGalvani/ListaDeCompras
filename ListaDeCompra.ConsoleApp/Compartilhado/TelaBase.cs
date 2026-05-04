@@ -19,34 +19,39 @@ public abstract class TelaBase<T> where T : EntidadeBase
     {
         string nomeMinusculo = nomeEntidade.ToLower();
 
-        //Console.Clear();
+        Console.Clear();
         if (nomeEntidade == "Categoria")
             Console.ForegroundColor = ConsoleColor.DarkYellow;
         else if (nomeEntidade == "Produto")
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
         else if (nomeEntidade == "Lista de compra")
             Console.ForegroundColor = ConsoleColor.Magenta;
         else if (nomeEntidade == "Item")
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
+
             Console.WriteLine("==============================================");
-            Console.WriteLine($"Gestão de {nomeEntidade}");
+            Console.WriteLine($"Gestão de item");
             Console.WriteLine("==============================================");
-            Console.WriteLine($"1 - adicionar um item a uma lista de compras");
-            Console.WriteLine($"2 - remover item da lista de compras");
-            Console.WriteLine($"3 - visualizar itens, listas de compras e suas categorias");
+            Console.ResetColor();
+            Console.WriteLine($"1 - adicionar item");
+            Console.WriteLine($"2 - Editar item adicionado");
+            Console.WriteLine($"3 - remover item");
+            Console.WriteLine($"4 - Visualizar itens");
             Console.WriteLine("S - Voltar para o início");
             Console.WriteLine("==============================================");
             Console.Write(">> ");
             string? opcaoMenuItem = Console.ReadLine()?.ToUpper();
-            Console.ResetColor();
 
             return opcaoMenuItem;
+
         }
+
 
         Console.WriteLine("==============================================");
         Console.WriteLine($"Gestão de {nomeEntidade}");
         Console.WriteLine("==============================================");
+        Console.ResetColor();
         Console.WriteLine($"1 - Cadastrar {nomeMinusculo}");
         Console.WriteLine($"2 - Editar {nomeMinusculo}");
         Console.WriteLine($"3 - Excluir {nomeMinusculo}");
@@ -55,7 +60,6 @@ public abstract class TelaBase<T> where T : EntidadeBase
         Console.WriteLine("==============================================");
         Console.Write(">> ");
         string? opcaoMenu = Console.ReadLine()?.ToUpper();
-        Console.ResetColor();
 
         return opcaoMenu;
     }
