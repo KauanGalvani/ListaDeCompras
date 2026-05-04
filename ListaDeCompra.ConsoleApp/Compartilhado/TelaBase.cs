@@ -194,7 +194,7 @@ public abstract class TelaBase<T> where T : EntidadeBase
 
     public void Excluir()
     {
-        ExibirCabecalho("Exclusão de Caixa");
+        ExibirCabecalho($"Exclusão de {nomeEntidade}");
 
         VisualizarTodos(deveExibirCabecalho: false);
 

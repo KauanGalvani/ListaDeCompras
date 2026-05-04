@@ -9,6 +9,7 @@ public class Categoria : EntidadeBase
     public string Nome { get; private set; } = string.Empty;
     public string Cor { get; private set; } = string.Empty;
 
+
     public Categoria(string nome, string cor)
     {
         Nome = nome;
